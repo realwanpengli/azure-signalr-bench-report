@@ -1,0 +1,41 @@
+{
+        "responsive": true,
+        "legend": {
+            "position": "right"
+    },
+        "elements": {
+            "line": {
+                "tension": 0.000001
+        },
+            "point": {
+                "radius": 0
+        }
+    },
+        "scales": {
+            "yAxes": [
+            {
+                "stacked": true
+            }
+        ]
+    },
+        "plugins": {
+            "filler": {
+                "propagate": false
+        },
+            "samples-filler-analyser": {
+                "target": "chart-analyser"
+        }
+    },
+    "animation": {
+        "duration": 0
+    },
+    "hover": {
+        "animationDuration": 0
+    },
+    "responsiveAnimationDuration": 0,
+    "tooltips": {
+      "mode": "index",
+      "intersect": false
+    }
+
+}

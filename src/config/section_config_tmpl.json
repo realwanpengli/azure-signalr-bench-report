@@ -1,0 +1,14 @@
+[
+	{
+		"id": "p2p_msgsize_256B",
+		"title": "",
+		"record_path": "/Users/albertxavier/Documents/signalr-result-2/report/p2p_msgsize_256B.txt",
+		"comment_path": "COMMENT_PATH",
+		"charts": [{
+			"counter_filter": ["message:lt", "message:ge"],
+			"type": "stack-line",
+			"id": "p2p_msgsize_256B-chart_section"
+		}]
+	}
+	
+]
