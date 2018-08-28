@@ -14,8 +14,14 @@ app.get(constant.SERVER_API_PRINT, (req, res) => {
     res.send({data: req.query.data});
 });
 
+app.get(constant.SERVER_API_GET_REPORT_CONFIG_LIST, (req, res) => {
+    let reportConfig = JSON.parse(util.readFileSync(constant.REPORT_CONFIG_PATH));
+    res.send(reportConfig);
+});
+
 app.get(constant.SERVER_API_GET_SECTION_CONFIG_LIST, (req, res) => {
-    var sectionConfigList = sectionConfigLoader.loadSectionConfigList(constant.SECTION_CONFIG_PATH);
+    let sectionConfigPath = req.query.sectionConfigPath;
+    let sectionConfigList = sectionConfigLoader.loadSectionConfigList(sectionConfigPath);
     res.send(sectionConfigList);
 });
 

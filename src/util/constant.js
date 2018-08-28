@@ -3,6 +3,9 @@
 exports.RECORD_TIME_KEY = "Time";
 exports.RECORD_COUNTERS_KEY = "Counters";
 
+// report config
+exports.REPORT_CONFIG_PATH = "src/config/report_config.json";
+exports.REPORT_SECTION_PATH_KEY = "section_config_path";
 
 // section config
 exports.SECTION_CONFIG_PATH = "src/config/section_config.json";
@@ -21,6 +24,7 @@ exports.SERVER_API_GET_CHART_COLOR = '/api/getChartColor';
 exports.SERVER_API_GET_LINE_DATASET_TMPL = '/api/getLineDatasetTmpl';
 exports.SERVER_API_GET_CHART_CONFIG = '/api/getChartConfig';
 exports.SERVER_API_GET_STACK_LINE_OPTIONS = '/api/getStackLineOptions';
+exports.SERVER_API_GET_REPORT_CONFIG_LIST = '/api/getReportConfigList';
 
 // ui
 // section chart id suffix

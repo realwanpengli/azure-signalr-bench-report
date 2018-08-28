@@ -1,0 +1,12 @@
+[
+	{
+		"id": "1",
+		"title": "title 1",
+		"section_config_path": "src/config/section_config.json"
+	},
+	{
+		"id": "2",
+		"title": "title 2",
+		"section_config_path": "src/config/section_config.json"
+	}
+]

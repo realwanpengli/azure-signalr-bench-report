@@ -1,59 +1,79 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Section from './section/Section'
+import Report from './Report';
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
+
 const constant = require('../util/constant');
 
 export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sectionConfigList: []
+            reportList: [],
+            reportIdList: []
         };
     }
 
     async componentDidMount() {
+        let reportConfigList = await this.getReportConfigList();
+        
+    }
+    
+    async getReportConfigList() {
         try {
-            var sectionConfigList = await this.loadSectionConfig();
-            this.setState({
-                sectionConfigList: sectionConfigList
-            });
+            let res = await fetch(constant.SERVER_API_GET_REPORT_CONFIG_LIST);
+            let reportConfigList = await res.json();
+            let reportList = await this.generateReportList(reportConfigList);
+            let reportIdList = this.generateReportIdList(reportConfigList);
+            this.setState({ reportList: reportList, reportIdList: reportIdList});
         } catch (error) {
             console.log(error);
         }
     }
 
-    async loadSectionConfig() {
+    async generateReportList(reportConfigList) {
+        return await Promise.all(reportConfigList.map(async (reportConfig, i) => {
+            let sectionConfigPath = reportConfig[constant.REPORT_SECTION_PATH_KEY];
+            let sectionConfig = await this.loadSectionConfig(sectionConfigPath);
+            let id = reportConfig.id;
+            let title = reportConfig.title;
+            let report = <Report id={id} title={title} sectionConfig={sectionConfig} />;
+            if (i == 0) return (<Route exact path={"/" + id} component={() => report} key={i} />);
+            return (<Route path={"/" + id} component={() => report} key={i} />);
+        }));
+    }
+
+    generateReportIdList(reportConfigList) {
+        return reportConfigList.map((reportConfig, i) => {
+            let id = reportConfig.id;
+            return (<li key={i}><Link to={"/" + id}> {id} </Link></li>);
+        });
+    }
+
+    async loadSectionConfig(sectionConfigPath) {
         try {
             // load section config
-            var res = await fetch(constant.SERVER_API_GET_SECTION_CONFIG_LIST);
-            var sectionConfigList = await res.json();
+            let query = "?sectionConfigPath=" + sectionConfigPath;
+            let res = await fetch(constant.SERVER_API_GET_SECTION_CONFIG_LIST + query);
+            let sectionConfigList = await res.json();
             return sectionConfigList;
         } catch (error) {
             console.log(error);
         }
     }
 
-    createSections() {
-        if (this.state.sectionConfigList == null || this.state.sectionConfigList == undefined) return;
-        var sections = [];
-        for (let i = 0; i < this.state.sectionConfigList.length; i++) {
-            sections.push(<Section sectionConfig={this.state.sectionConfigList[i]} key={i}/>);
-        }
-        return sections;
-    }
-
     render() {
         return (
-            <div className="container-fluid">
-            <div className="row">
-                <div className="col-12">
-                <h1>Azure SignalR Service Performance Report v1</h1>
-                </div>
-            </div>
-            <div className="row">
-                    {this.createSections()}
-            </div>
-
+            <div>
+                <Router>
+                    <div>
+                        <ul>
+                            {this.state.reportIdList}
+                        </ul>
+                        <hr />
+                        {this.state.reportList}
+                    </div>
+                </Router>
             </div>
         );
     }
