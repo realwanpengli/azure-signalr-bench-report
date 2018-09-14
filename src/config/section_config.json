@@ -1,8 +1,8 @@
 [
     {
-        "id": "scenario_broadcast",
-        "title": "scenario broadcast",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_broadcast.txt",
+        "id": "1",
+        "title": "1",
+        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report_p2_msgsize_256/1.txt",
         "comment_path": "",
         "charts": [
             {
@@ -13,14 +13,17 @@
                     "message:notSentFromClient"
                 ],
                 "type": "stack-line",
-                "id": "scenario_broadcast-chart"
+                "id": "1-chart"
             }
+        ],
+        "table_paths": [
+            "/Users/albertxavier/workspace/azure-signalr-bench-report/src/config/table_tmpl.csv"
         ]
     },
     {
-        "id": "scenario_echo",
-        "title": "scenario echo",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_echo.txt",
+        "id": "2",
+        "title": "2",
+        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report_p2_msgsize_256/2.txt",
         "comment_path": "",
         "charts": [
             {
@@ -31,14 +34,17 @@
                     "message:notSentFromClient"
                 ],
                 "type": "stack-line",
-                "id": "scenario_echo-chart"
+                "id": "2-chart"
             }
+        ],
+        "table_paths": [
+            "/Users/albertxavier/workspace/azure-signalr-bench-report/src/config/table_tmpl.csv"
         ]
     },
     {
-        "id": "scenario_freqJoinLeaveGroup_groupNum_10",
-        "title": "scenario freqJoinLeaveGroup groupNum 10",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_freqJoinLeaveGroup_groupNum_10.txt",
+        "id": "3",
+        "title": "3",
+        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report_p2_msgsize_256/3.txt",
         "comment_path": "",
         "charts": [
             {
@@ -49,14 +55,17 @@
                     "message:notSentFromClient"
                 ],
                 "type": "stack-line",
-                "id": "scenario_freqJoinLeaveGroup_groupNum_10-chart"
+                "id": "3-chart"
             }
+        ],
+        "table_paths": [
+            "/Users/albertxavier/workspace/azure-signalr-bench-report/src/config/table_tmpl.csv"
         ]
     },
     {
-        "id": "scenario_freqJoinLeaveGroup_groupNum_10000",
-        "title": "scenario freqJoinLeaveGroup groupNum 10000",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_freqJoinLeaveGroup_groupNum_10000.txt",
+        "id": "4",
+        "title": "4",
+        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report_p2_msgsize_256/4.txt",
         "comment_path": "",
         "charts": [
             {
@@ -67,14 +76,17 @@
                     "message:notSentFromClient"
                 ],
                 "type": "stack-line",
-                "id": "scenario_freqJoinLeaveGroup_groupNum_10000-chart"
+                "id": "4-chart"
             }
+        ],
+        "table_paths": [
+            "/Users/albertxavier/workspace/azure-signalr-bench-report/src/config/table_tmpl.csv"
         ]
     },
     {
-        "id": "scenario_p2p_msgsize_128k",
-        "title": "scenario p2p msgsize 128k",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_msgsize_128k.txt",
+        "id": "5",
+        "title": "5",
+        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report_p2_msgsize_256/5.txt",
         "comment_path": "",
         "charts": [
             {
@@ -85,14 +97,17 @@
                     "message:notSentFromClient"
                 ],
                 "type": "stack-line",
-                "id": "scenario_p2p_msgsize_128k-chart"
+                "id": "5-chart"
             }
+        ],
+        "table_paths": [
+            "/Users/albertxavier/workspace/azure-signalr-bench-report/src/config/table_tmpl.csv"
         ]
     },
     {
-        "id": "scenario_p2p_msgsize_16k",
-        "title": "scenario p2p msgsize 16k",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_msgsize_16k.txt",
+        "id": "6",
+        "title": "6",
+        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report_p2_msgsize_256/6.txt",
         "comment_path": "",
         "charts": [
             {
@@ -103,14 +118,17 @@
                     "message:notSentFromClient"
                 ],
                 "type": "stack-line",
-                "id": "scenario_p2p_msgsize_16k-chart"
+                "id": "6-chart"
             }
+        ],
+        "table_paths": [
+            "/Users/albertxavier/workspace/azure-signalr-bench-report/src/config/table_tmpl.csv"
         ]
     },
     {
-        "id": "scenario_p2p_msgsize_256B",
-        "title": "scenario p2p msgsize 256B",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_msgsize_256B.txt",
+        "id": "7",
+        "title": "7",
+        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report_p2_msgsize_256/7.txt",
         "comment_path": "",
         "charts": [
             {
@@ -121,14 +139,17 @@
                     "message:notSentFromClient"
                 ],
                 "type": "stack-line",
-                "id": "scenario_p2p_msgsize_256B-chart"
+                "id": "7-chart"
             }
+        ],
+        "table_paths": [
+            "/Users/albertxavier/workspace/azure-signalr-bench-report/src/config/table_tmpl.csv"
         ]
     },
     {
-        "id": "scenario_p2p_msgsize_2k",
-        "title": "scenario p2p msgsize 2k",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_msgsize_2k.txt",
+        "id": "8",
+        "title": "8",
+        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report_p2_msgsize_256/8.txt",
         "comment_path": "",
         "charts": [
             {
@@ -139,188 +160,11 @@
                     "message:notSentFromClient"
                 ],
                 "type": "stack-line",
-                "id": "scenario_p2p_msgsize_2k-chart"
+                "id": "8-chart"
             }
-        ]
-    },
-    {
-        "id": "scenario_p2p_msgsize_2k_redis_p1",
-        "title": "scenario p2p msgsize 2k redis p1",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_msgsize_2k_redis_p1.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_p2p_msgsize_2k_redis_p1-chart"
-            }
-        ]
-    },
-    {
-        "id": "scenario_p2p_msgsize_2k_redis_p2",
-        "title": "scenario p2p msgsize 2k redis p2",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_msgsize_2k_redis_p2.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_p2p_msgsize_2k_redis_p2-chart"
-            }
-        ]
-    },
-    {
-        "id": "scenario_p2p_msgsize_2k_redis_p3",
-        "title": "scenario p2p msgsize 2k redis p3",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_msgsize_2k_redis_p3.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_p2p_msgsize_2k_redis_p3-chart"
-            }
-        ]
-    },
-    {
-        "id": "scenario_p2p_msgsize_2k_redis_p4",
-        "title": "scenario p2p msgsize 2k redis p4",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_msgsize_2k_redis_p4.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_p2p_msgsize_2k_redis_p4-chart"
-            }
-        ]
-    },
-    {
-        "id": "scenario_p2p_transportType_longpolling_msgsize_2k",
-        "title": "scenario p2p transportType longpolling msgsize 2k",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_transportType_longpolling_msgsize_2k.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_p2p_transportType_longpolling_msgsize_2k-chart"
-            }
-        ]
-    },
-    {
-        "id": "scenario_p2p_transportType_sse_msgsize_2k",
-        "title": "scenario p2p transportType sse msgsize 2k",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_transportType_sse_msgsize_2k.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_p2p_transportType_sse_msgsize_2k-chart"
-            }
-        ]
-    },
-    {
-        "id": "scenario_p2p_transportType_websocket_msgsize_2k",
-        "title": "scenario p2p transportType websocket msgsize 2k",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_transportType_websocket_msgsize_2k.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_p2p_transportType_websocket_msgsize_2k-chart"
-            }
-        ]
-    },
-    {
-        "id": "scenario_p2p_transportType_websocket_protocol_msgpack_msgsize_2k",
-        "title": "scenario p2p transportType websocket protocol msgpack msgsize 2k",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_p2p_transportType_websocket_protocol_msgpack_msgsize_2k.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_p2p_transportType_websocket_protocol_msgpack_msgsize_2k-chart"
-            }
-        ]
-    },
-    {
-        "id": "scenario_sendGroup_groupNum_10",
-        "title": "scenario sendGroup groupNum 10",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_sendGroup_groupNum_10.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_sendGroup_groupNum_10-chart"
-            }
-        ]
-    },
-    {
-        "id": "scenario_sendGroup_groupNum_10000",
-        "title": "scenario sendGroup groupNum 10000",
-        "record_path": "/Users/albertxavier/Documents/signalr-result-2/report/scenario_sendGroup_groupNum_10000.txt",
-        "comment_path": "",
-        "charts": [
-            {
-                "counter_filter": [
-                    "message:lt",
-                    "message:ge",
-                    "connection:error",
-                    "message:notSentFromClient"
-                ],
-                "type": "stack-line",
-                "id": "scenario_sendGroup_groupNum_10000-chart"
-            }
+        ],
+        "table_paths": [
+            "/Users/albertxavier/workspace/azure-signalr-bench-report/src/config/table_tmpl.csv"
         ]
     }
 ]

@@ -1,43 +1,49 @@
 const os = require('os');
+const fs = require('fs');
 const util = require('../util');
 const constant = require('../constant');
 const counterSorter = require('./counterSorter');
 /*
  * normalize array of records based on time to (counters key, counters value list for a period) pairs
  */
-exports.normalize = (path) => {
+exports.normalize = (path, callback) => {
     // read records
-    var recordList = getRecordList(path);
-
-    // remove non-json lines
-    var recordList = filterNonJsonLines(recordList);
-
-    // get keys in counters
-    var keyList = getKeysInCounters(recordList[0]);
-    // console.log(keyList);
-    // get data list in time for each key
-    var dataDict = getDataDict(recordList, keyList);
-
-    return dataDict;
+    getRecordList(path, (recordList) => {
+        // remove non-json lines
+        var recordList = filterNonJsonLines(recordList);
+        // get keys in counters
+        var keyList = getKeysInCounters(recordList[0]);
+        // get data list in time for each key
+        var dataDict = getDataDict(recordList, keyList);
+        callback(dataDict);
+    });
 }
 
-exports.getTimeList = (path) => {
+exports.getTimeList = (path, callback) => {
     // read records
-    var recordList = getRecordList(path);
-    
-    // remove non-json lines
-    var recordList = filterNonJsonLines(recordList);
-
-    // get time list
-    var timeList = getTimeList(recordList);
-
-    return timeList;
+    getRecordList(path, (recordList) => {
+        // remove non-json lines
+        var recordList = filterNonJsonLines(recordList);
+        // get time list
+        var timeList = getTimeList(recordList);
+        callback(timeList);
+    });
 }
 
-function getRecordList(path) {
-    var recordStr = util.readFileSync(path);
-    var recordList = recordStr.split(os.EOL);
-    return recordList;
+function getRecordList(path, callback) {
+    // var recordStr = util.readFileSync(path);
+    // var recordList = recordStr.split(os.EOL);
+    // return recordList;
+
+    // read record
+    fs.readFile(path, 'utf8', (err, recordStr) => {
+        if (err) {
+            console.log(err);
+        } else {
+            var recordList = recordStr.split(os.EOL);
+            callback(recordList);
+        }
+    });
 }
 
 function getDataDict(recordList, keyList) {

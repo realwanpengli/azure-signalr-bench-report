@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import ChartSection from './components/ChartSection'
+import ChartSection from './components/ChartSection';
+import TableSection from './components/TableSection';
 const constant = require('../../util/constant');
 
 export default class Section extends Component {
     constructor(props) {
         super(props);
-        this.state = { chartSections: [] };
+        this.state = {
+            chartSections: [],
+            tableSections: []
+         };
     }
 
     async componentDidMount() {
         try {
+            this.createTableSections();
             await this.createChartSections();
         } catch (error) {
             console.log(error);
         }
+    }
+
+    createTableSections() {
+        let tablePathList = this.props.sectionConfig[constant.SECTION_TABLE_PATH_LIST];
+        let tableList = tablePathList.map((path, i) => (<TableSection tablePath={path} key={i}/>));
+        this.setState({ tableSections: tableList });
     }
 
     async createChartSections() {
@@ -64,6 +75,9 @@ export default class Section extends Component {
                 <div className='row'>
                     <div className='col-12'>
                         {this.props.sectionConfig.title}
+                    </div>
+                    <div className='col-12'>
+                        {this.state.tableSections}
                     </div>
                     <div className='col-12'>
                         {this.state.chartSections}

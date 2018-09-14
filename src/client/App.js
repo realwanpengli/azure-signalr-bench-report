@@ -38,7 +38,7 @@ export default class App extends Component {
             let id = reportConfig.id;
             let title = reportConfig.title;
             let report = <Report id={id} title={title} sectionConfig={sectionConfig} />;
-            if (i == 0) return (<Route exact path={"/" + id} component={() => report} key={i} />);
+            // if (i == 0) return (<Route exact path={"/" + id} component={() => report} key={i} />);
             return (<Route path={"/" + id} component={() => report} key={i} />);
         }));
     }

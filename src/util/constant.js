@@ -12,6 +12,7 @@ exports.SECTION_CONFIG_PATH = "src/config/section_config.json";
 exports.SECTION_CONFIG_COUNTERS_PATH_KEY = "record_path";
 exports.SECTION_CONFIG_CHART_TYPE = "chart_type";
 exports.SECTION_CONFIG_COUNTER_FILTER = "counter_filter";
+exports.SECTION_TABLE_PATH_LIST = "table_paths";
 
 // server api
 exports.SERVER_API_PRINT = "/api/print";
@@ -29,3 +30,6 @@ exports.SERVER_API_GET_REPORT_CONFIG_LIST = '/api/getReportConfigList';
 // ui
 // section chart id suffix
 exports.UI_SECTION_CHART_ID_SUFFIX = "chart";
+
+// util
+exports.UTIL_READ_FILE = "/api/readFile";

@@ -28,27 +28,26 @@ app.get(constant.SERVER_API_GET_SECTION_CONFIG_LIST, (req, res) => {
 app.get(constant.SERVER_API_GET_COUNTER_DICT_LIST, (req, res) => {
     var recordPathList = req.query.recordPathList;
     var counterDictList = [];
-    recordPathList.forEach(path => counterDictList.push(dataNormalizer.normalize(path)));
+    recordPathList.forEach(path => dataNormalizer.normalize(path, (counterDict) => counterDictList.push(counterDict)));
     res.send(counterDictList);
 });
 
 app.get(constant.SERVER_API_GET_COUNTER_DICT, (req, res) => {
     var recordPath = req.query.recordPath;
-    var counterDict = dataNormalizer.normalize(recordPath);
-    res.send(counterDict);
+    dataNormalizer.normalize(recordPath, counterDict => res.send(counterDict));
+    ;
 });
 
 app.get(constant.SERVER_API_GET_RECORD_TIME_LIST_LIST, (req, res) => {
     var recordPathList = req.query.recordPathList;
     var recordTimeListList = [];
-    recordPathList.forEach(path => recordTimeListList.push(dataNormalizer.getTimeList(path)));
+    recordPathList.forEach(path => recordTimeListList.push(dataNormalizer.getTimeList(path, (timeList) => recordTimeListList.push(timeList))));
     res.send(recordTimeListList);
 });
 
 app.get(constant.SERVER_API_GET_RECORD_TIME_LIST, (req, res) => {
     var recordPathList = req.query.recordPath;
-    var recordTimeList = dataNormalizer.getTimeList(recordPathList);
-    res.send(recordTimeList);
+    dataNormalizer.getTimeList(recordPathList, recordTimeList => res.send(recordTimeList));
 });
 
 app.get(constant.SERVER_API_GET_CHART_COLOR, (req, res) => {
@@ -79,6 +78,18 @@ app.get(constant.SERVER_API_GET_STACK_LINE_OPTIONS, (req, res) => {
     var content = util.readFileSync('../config/chart_configs/stackLineChartOption.json');
     var json = JSON.parse(content);
     res.send(json);
+});
+
+app.get(constant.UTIL_READ_FILE, (req, res) => {
+    let path = req.query.path;
+    fs.readFile(path, 'utf8', (err, data) => {
+        if (err) {
+            console.log(err);
+            res.send(data);
+            return;
+        }
+        res.send(data);
+    });
 });
 
 app.listen(8787, () => console.log('Listening on port 8787!'));
