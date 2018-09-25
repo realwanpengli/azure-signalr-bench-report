@@ -5,8 +5,10 @@ const util = require('../util/util');
 const sectionConfigLoader = require('../util/config_handler/sectionConfigLoader');
 const dataNormalizer = require('../util/data_handler/dataNormalizer');
 const constant = require('../util/constant');
-const app = express();
+const resultCollector = require('../util/result_handler/resultCollector');
+const path = require('path');
 
+const app = express();
 
 app.use(express.static('dist'));
 
@@ -91,6 +93,64 @@ app.get(constant.UTIL_READ_FILE, (req, res) => {
         res.send(data);
     });
 });
+
+app.get(constant.SERVER_API_GENERATE_DAILY_REPORT_CONFIG, (req, res) => {
+    let mode = req.query.mode;
+    if (mode && mode != constant.DISPLAY_MODE_DAILY) {
+        res.send({});
+    } else {
+        let reportCfgTmpl = util.loadReportConfigTmpl();
+        if (!fs.existsSync(constant.TMP_DIR)) fs.mkdirSync(constant.TMP_DIR);
+        let reportCfg = JSON.parse(reportCfgTmpl);
+        reportCfg[0]['id'] = 'id';
+        reportCfg[0]['title'] = 'title';
+        const timestamp = new Date().getTime();
+        reportCfg[0]['section_config_path'] = path.join(constant.TMP_DIR, `section_config_${timestamp}.json`);
+        res.send(reportCfg);
+    }
+});
+
+app.get(constant.SERVER_API_GENERATE_DAILY_SECTION_CONFIG, (req, res) => {
+    
+    // collect results
+    let root = req.query.root;
+    let prefix = req.query.prefix;
+    let configName = req.query.configName;
+    let resultName = req.query.resultName;
+    let resultDict = resultCollector.collectResult(root, prefix, configName, resultName);
+
+    // generate section config
+
+    // load tmpl
+    let sectionCfgTmpl = JSON.parse(util.loadSectionConfigTmpl());
+    sectionCfgEleTmpl = sectionCfgTmpl[0];
+
+    // generate section config list
+    let sectionCfgList = [];
+    Object.keys(resultDict).forEach(key => {
+        let scenarioList = resultDict[key];
+        scenarioList.forEach(scenarioObj => {
+            let cfg = util.clone(sectionCfgEleTmpl);
+            cfg['id'] = key + '_' + scenarioObj[constant.SUB_DIRECTORY_SCENARIO];
+            cfg['title'] = key + '_' + scenarioObj[constant.SUB_DIRECTORY_SCENARIO];
+            console.log('scenarioObj', scenarioObj);
+            let logPath = scenarioObj[constant.SUB_DIRECTORY_LOG];
+            cfg[constant.SECTION_CONFIG_COUNTERS_PATH_KEY] = logPath;
+            cfg['charts'][0]['id'] = key + '_' + scenarioObj[constant.SUB_DIRECTORY_SCENARIO] + '_' + 'chart';
+            console.log('cfg', cfg);
+            sectionCfgList.push(cfg);
+        });
+    });
+
+
+    // save section config list
+    let savePath = req.query.savePath;
+    fs.writeFileSync(savePath, JSON.stringify(sectionCfgList), 'utf8');
+
+    res.send(null);
+});
+
+
 
 app.listen(8787, () => console.log('Listening on port 8787!'));
 

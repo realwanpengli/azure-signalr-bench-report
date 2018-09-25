@@ -15,7 +15,10 @@ export default class Section extends Component {
 
     async componentDidMount() {
         try {
-            this.createTableSections();
+            let tablePath = this.props.sectionConfig[constant.SECTION_TABLE_PATH_LIST];
+            if (tablePath && tablePath.length > 0) {
+                this.createTableSections();
+            }
             await this.createChartSections();
         } catch (error) {
             console.log(error);
@@ -30,6 +33,7 @@ export default class Section extends Component {
 
     async createChartSections() {
         let chartConfigList = this.props.sectionConfig.charts;
+        console.log('sectionConfig', this.props.sectionConfig);
 
         let chartSections = [];
         for (let i = 0; i < chartConfigList.length; i++) {

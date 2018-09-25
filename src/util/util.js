@@ -1,4 +1,6 @@
 const fs = require('fs');
+const constant = require('./constant');
+const path = require('path');
 
 // test
 exports.test = (argument) => {
@@ -30,6 +32,14 @@ exports.convertRecord2Json = (recordStr) => {
 exports.clone = (src) => {
     return JSON.parse(JSON.stringify(src));
 }
+
+exports.loadReportConfigTmpl = () => {
+    return fs.readFileSync(constant.REPORT_CONFIG_TMPL_PATH, 'utf8');
+};
+
+exports.loadSectionConfigTmpl = () => {
+    return fs.readFileSync(constant.SECTION_CONFIG_TMPL_PATH, 'utf8');
+};
 
 
 

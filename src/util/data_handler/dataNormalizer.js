@@ -31,11 +31,6 @@ exports.getTimeList = (path, callback) => {
 }
 
 function getRecordList(path, callback) {
-    // var recordStr = util.readFileSync(path);
-    // var recordList = recordStr.split(os.EOL);
-    // return recordList;
-
-    // read record
     fs.readFile(path, 'utf8', (err, recordStr) => {
         if (err) {
             console.log(err);

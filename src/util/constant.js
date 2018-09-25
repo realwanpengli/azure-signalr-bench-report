@@ -26,6 +26,13 @@ exports.SERVER_API_GET_LINE_DATASET_TMPL = '/api/getLineDatasetTmpl';
 exports.SERVER_API_GET_CHART_CONFIG = '/api/getChartConfig';
 exports.SERVER_API_GET_STACK_LINE_OPTIONS = '/api/getStackLineOptions';
 exports.SERVER_API_GET_REPORT_CONFIG_LIST = '/api/getReportConfigList';
+exports.SERVER_API_GENERATE_DAILY_REPORT_CONFIG = '/api/generateDailyReportConfig';
+exports.SERVER_API_GENERATE_DAILY_SECTION_CONFIG = '/api/generateDailySectionConfig';
+
+// load config template
+exports.REPORT_CONFIG_TMPL_PATH = 'src/config/report_config_tmpl.json';
+exports.SECTION_CONFIG_TMPL_PATH = 'src/config/section_config_tmpl.json';
+
 
 // ui
 // section chart id suffix
@@ -33,3 +40,14 @@ exports.UI_SECTION_CHART_ID_SUFFIX = "chart";
 
 // util
 exports.UTIL_READ_FILE = "/api/readFile";
+
+// display mode
+exports.DISPLAY_MODE_DAILY = 'daily';
+
+// io
+exports.TMP_DIR = '.tmp';
+
+// result directory structure
+exports.SUB_DIRECTORY_LOG = 'log';
+exports.SUB_DIRECTORY_CONFIG = 'config';
+exports.SUB_DIRECTORY_SCENARIO = 'scenario';
