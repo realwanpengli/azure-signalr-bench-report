@@ -6,7 +6,7 @@ let log = fs.readFileSync('/Users/albertxavier/signalr-bench-statistics-suffix/l
 let resList = resultFilter.extractMiddleResultList(log, 'current step: up5000');
 
 let rules = [/message:lt:/, /message:ge/, /connection:error/];
-let per = resultFilter.convertToPercent(resList[1], rules);
+// let per = resultFilter.convertToPercent(resList[1], rules);
 // console.log(per);
 
 let counterList = resList.map(res => res[constant.RECORD_COUNTERS_KEY]);

@@ -2,6 +2,8 @@
 // record
 exports.RECORD_TIME_KEY = "Time";
 exports.RECORD_COUNTERS_KEY = "Counters";
+exports.RECORD_RECEIVED_MSG = "message:received";
+exports.RECORD_CONN_ERROR = "connection:error";
 
 // report config
 exports.REPORT_CONFIG_PATH = "src/config/report_config.json";
@@ -12,7 +14,7 @@ exports.SECTION_CONFIG_PATH = "src/config/section_config.json";
 exports.SECTION_CONFIG_COUNTERS_PATH_KEY = "record_path";
 exports.SECTION_CONFIG_CHART_TYPE = "chart_type";
 exports.SECTION_CONFIG_COUNTER_FILTER = "counter_filter";
-exports.SECTION_TABLE_PATH_LIST = "table_paths";
+exports.SECTION_TABLE_PATH_LIST = "tables_path";
 
 // server api
 exports.SERVER_API_PRINT = "/api/print";

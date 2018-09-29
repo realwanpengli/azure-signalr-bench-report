@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
+import "bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const os = require('os');
 const constant = require('../../../util/constant.js');
 
@@ -29,7 +33,7 @@ export default class TableSection extends Component {
     createTable(matrix) {
         let header = this.createRowInTable(matrix[0], true);
         let rows = matrix.slice(1).map((row, i) => this.createRowInTable(row, i, false));
-        let table = (<table border="1"><tbody>{header}{rows}</tbody></table>);
+        let table = (<table className="table table-bordered table-responsive"><tbody>{header}{rows}</tbody></table>);
         return table;
     }
 

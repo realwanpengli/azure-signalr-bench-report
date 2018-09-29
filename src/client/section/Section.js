@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
+import "bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import ChartSection from './components/ChartSection';
 import TableSection from './components/TableSection';
 const constant = require('../../util/constant');
@@ -16,6 +20,8 @@ export default class Section extends Component {
     async componentDidMount() {
         try {
             let tablePath = this.props.sectionConfig[constant.SECTION_TABLE_PATH_LIST];
+            console.log('cfg', this.props.sectionConfig);
+            console.log('table path', tablePath);
             if (tablePath && tablePath.length > 0) {
                 this.createTableSections();
             }
@@ -80,7 +86,7 @@ export default class Section extends Component {
                     <div className='col-12'>
                         {this.props.sectionConfig.title}
                     </div>
-                    <div className='col-12'>
+                    <div className='col-10'>
                         {this.state.tableSections}
                     </div>
                     <div className='col-12'>

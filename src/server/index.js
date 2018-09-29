@@ -6,7 +6,10 @@ const sectionConfigLoader = require('../util/config_handler/sectionConfigLoader'
 const dataNormalizer = require('../util/data_handler/dataNormalizer');
 const constant = require('../util/constant');
 const resultCollector = require('../util/result_handler/resultCollector');
+const resultFilter = require('../util/result_handler/resultFilter');
 const path = require('path');
+const tableGenerator = require('../util/table_handler/tableGenerator');
+
 
 const app = express();
 
@@ -102,8 +105,8 @@ app.get(constant.SERVER_API_GENERATE_DAILY_REPORT_CONFIG, (req, res) => {
         let reportCfgTmpl = util.loadReportConfigTmpl();
         if (!fs.existsSync(constant.TMP_DIR)) fs.mkdirSync(constant.TMP_DIR);
         let reportCfg = JSON.parse(reportCfgTmpl);
-        reportCfg[0]['id'] = 'id';
-        reportCfg[0]['title'] = 'title';
+        reportCfg[0]['id'] = 'Regular Test Result';
+        reportCfg[0]['title'] = '';
         const timestamp = new Date().getTime();
         reportCfg[0]['section_config_path'] = path.join(constant.TMP_DIR, `section_config_${timestamp}.json`);
         res.send(reportCfg);
@@ -117,6 +120,8 @@ app.get(constant.SERVER_API_GENERATE_DAILY_SECTION_CONFIG, (req, res) => {
     let prefix = req.query.prefix;
     let configName = req.query.configName;
     let resultName = req.query.resultName;
+    let rules = req.query.rules;
+    let barriers = req.query.barriers;
     let resultDict = resultCollector.collectResult(root, prefix, configName, resultName);
 
     // generate section config
@@ -132,12 +137,12 @@ app.get(constant.SERVER_API_GENERATE_DAILY_SECTION_CONFIG, (req, res) => {
         scenarioList.forEach(scenarioObj => {
             let cfg = util.clone(sectionCfgEleTmpl);
             cfg['id'] = key + '_' + scenarioObj[constant.SUB_DIRECTORY_SCENARIO];
-            cfg['title'] = key + '_' + scenarioObj[constant.SUB_DIRECTORY_SCENARIO];
-            console.log('scenarioObj', scenarioObj);
+            cfg['title'] = scenarioObj[constant.SUB_DIRECTORY_SCENARIO];
             let logPath = scenarioObj[constant.SUB_DIRECTORY_LOG];
             cfg[constant.SECTION_CONFIG_COUNTERS_PATH_KEY] = logPath;
             cfg['charts'][0]['id'] = key + '_' + scenarioObj[constant.SUB_DIRECTORY_SCENARIO] + '_' + 'chart';
-            console.log('cfg', cfg);
+            // cfg['tables_path'] = tableGenerator.generateBasicTables(logPath, rules, barrier);
+            cfg['tables_path'] = tableGenerator.generateLt1sTables(logPath, rules, barriers);
             sectionCfgList.push(cfg);
         });
     });
@@ -153,4 +158,7 @@ app.get(constant.SERVER_API_GENERATE_DAILY_SECTION_CONFIG, (req, res) => {
 
 
 app.listen(8787, () => console.log('Listening on port 8787!'));
+
+
+
 

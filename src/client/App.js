@@ -27,7 +27,7 @@ export default class App extends Component {
     async generateDailyReportList() {
         try {
             // generate report config
-            let res = await fetch(constant.SERVER_API_GENERATE_DAILY_REPORT_CONFIG);
+            let res = await fetch(constant.SERVER_API_GENERATE_DAILY_REPORT_CONFIG + `?mode=daily`);
             let reportConfigList = await res.json();
             console.log('reportConfigList', reportConfigList);
 
@@ -39,6 +39,16 @@ export default class App extends Component {
             url += `&prefix=${query.prefix}`;
             url += `&configName=${query.configName}`;
             url += `&resultName=${query.resultName}`;
+            console.log('q', query);
+            if (typeof query.rules == 'string')
+                url += `&rules[]=${query.rules}`;
+            else
+                query.rules.forEach(rule => url += `&rules[]=${rule}`);
+            if (typeof query.barriers == 'string')
+                url += `&barrier=${query.barriers}`;
+            else
+                query.barriers.forEach(barrier => url += `&barriers[]=${barrier}`);
+
             await fetch(url);
 
             // generate ui
@@ -50,7 +60,6 @@ export default class App extends Component {
         } catch (error) {
             console.log(error);
         }
-        
     }
 
     async getReportExperimentConfigList() {
@@ -70,6 +79,7 @@ export default class App extends Component {
         return await Promise.all(reportConfigList.map(async (reportConfig, i) => {
             let sectionConfigPath = reportConfig[constant.REPORT_SECTION_PATH_KEY];
             let sectionConfig = await this.loadSectionConfig(sectionConfigPath);
+            console.log('section config', sectionConfig);
             let id = reportConfig.id;
             let title = reportConfig.title;
             let report = <Report id={id} title={title} sectionConfig={sectionConfig} />;
